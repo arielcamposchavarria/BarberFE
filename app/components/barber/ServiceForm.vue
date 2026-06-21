@@ -4,7 +4,7 @@
       <label class="mb-1 block text-sm font-medium text-slate-700" for="name">Nombre</label>
       <input id="name" v-model="form.name" type="text" class="w-full rounded-xl border border-slate-200 px-3.5 py-2.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100" required>
     </div>
-    <div class="grid grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
       <div>
         <label class="mb-1 block text-sm font-medium text-slate-700" for="price">Precio (₡)</label>
         <input id="price" v-model.number="form.price" type="number" min="0" class="w-full rounded-xl border border-slate-200 px-3.5 py-2.5 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100" required>

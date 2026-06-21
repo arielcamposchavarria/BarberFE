@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'client', middleware: 'role', role: 'client' })
+definePageMeta({ layout: 'client', public: true })
 
 const route = useRoute()
 const barbershopId = route.params.id as string

@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'client', middleware: 'role', role: 'client' })
+definePageMeta({ layout: 'client', public: true })
 
 const barbershopsStore = useBarbershopsStore()
 const router = useRouter()

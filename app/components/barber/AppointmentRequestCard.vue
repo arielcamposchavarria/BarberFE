@@ -1,6 +1,6 @@
 <template>
   <div class="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm shadow-slate-200/50">
-    <div class="flex items-start justify-between">
+    <div class="flex flex-col items-start gap-2 sm:flex-row sm:justify-between">
       <div>
         <p class="font-semibold text-slate-900">
           {{ clientName }}
@@ -21,7 +21,7 @@
       <p v-if="errorMessage" class="text-sm text-red-600">
         {{ errorMessage }}
       </p>
-      <div class="flex gap-2">
+      <div class="flex flex-wrap gap-2">
         <AppButton @click="handleAccept">
           Aceptar
         </AppButton>

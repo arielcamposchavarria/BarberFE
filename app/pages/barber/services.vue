@@ -12,7 +12,7 @@
     <div v-if="servicesStore.isLoading" class="text-slate-500">
       Cargando...
     </div>
-    <div v-else class="grid gap-4 sm:grid-cols-3">
+    <div v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <ServiceCard
         v-for="service in servicesStore.items"
         :key="service.id"

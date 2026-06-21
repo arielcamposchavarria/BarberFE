@@ -3,7 +3,7 @@
     <NuxtLink :to="`/client/barbershops/${barber.barbershopId}`" class="text-sm text-slate-500 hover:underline">
       ← Volver
     </NuxtLink>
-    <div class="mt-2 flex items-center gap-4">
+    <div class="mt-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
       <img v-if="barber.avatarUrl" :src="barber.avatarUrl" :alt="barber.displayName" class="h-16 w-16 rounded-full object-cover">
       <div>
         <h1 class="text-2xl font-semibold tracking-tight text-slate-900">
@@ -21,6 +21,12 @@
     <h2 class="mt-8 mb-4 text-xl font-semibold">
       Reservar una cita
     </h2>
+    <p v-if="!isAuthenticated" class="mb-4 text-sm text-slate-500">
+      <NuxtLink :to="{ path: '/login', query: { redirect: route.fullPath } }" class="font-medium text-indigo-600 hover:text-indigo-500">
+        Inicia sesión
+      </NuxtLink>
+      para poder solicitar la cita.
+    </p>
     <p v-if="successMessage" class="mb-4 text-sm text-emerald-600">
       {{ successMessage }}
     </p>
@@ -47,12 +53,13 @@ import type { Slot } from '~/utils/availability'
 import { getBarberById } from '~/services/barber.service'
 import { getSlotsForBarberOnDate } from '~/services/appointment.service'
 
-definePageMeta({ layout: 'client', middleware: 'role', role: 'client' })
+definePageMeta({ layout: 'client', public: true })
 
 const route = useRoute()
+const router = useRouter()
 const barberId = route.params.id as string
 
-const { user } = useAuth()
+const { user, isAuthenticated } = useAuth()
 const servicesStore = useServicesStore()
 const appointmentsStore = useAppointmentsStore()
 const clientsStore = useClientsStore()
@@ -104,7 +111,10 @@ function handleDateChange(date: string) {
 }
 
 async function handleSubmit(data: { serviceId: string, date: string, startMinutes: number }) {
-  if (!user.value) return
+  if (!user.value) {
+    await router.push({ path: '/login', query: { redirect: route.fullPath } })
+    return
+  }
   formError.value = ''
   successMessage.value = ''
   isSubmitting.value = true

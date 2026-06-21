@@ -4,7 +4,7 @@
       v-for="star in 5"
       :key="star"
       type="button"
-      class="text-xl leading-none"
+      class="p-1.5 text-xl leading-none"
       :class="star <= modelValue ? 'text-amber-500' : 'text-slate-300'"
       :disabled="readonly"
       @click="handleClick(star)"

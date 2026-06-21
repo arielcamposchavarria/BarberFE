@@ -14,12 +14,12 @@
     <div v-else-if="slots.length === 0" class="text-slate-500">
       No hay horarios disponibles ese día.
     </div>
-    <div v-else class="grid grid-cols-3 gap-2 sm:grid-cols-4">
+    <div v-else class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
       <button
         v-for="slot in slots"
         :key="slot.startMinutes"
         type="button"
-        class="rounded-xl border px-2 py-1.5 text-sm font-medium transition"
+        class="rounded-xl border px-2 py-2.5 text-sm font-medium transition"
         :class="slotClass(slot)"
         :disabled="!slot.available"
         @click="emit('select', { date: selectedDate, startMinutes: slot.startMinutes })"

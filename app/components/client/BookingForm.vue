@@ -21,7 +21,7 @@
       {{ errorMessage }}
     </p>
 
-    <AppButton :disabled="!canSubmit || isSubmitting" @click="handleSubmit">
+    <AppButton class="w-full sm:w-auto" :disabled="!canSubmit || isSubmitting" @click="handleSubmit">
       {{ isSubmitting ? 'Solicitando...' : 'Solicitar cita' }}
     </AppButton>
   </div>
