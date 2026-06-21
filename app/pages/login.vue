@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-sm rounded-3xl bg-white p-9 shadow-xl shadow-slate-900/5">
+  <div class="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-9">
     <div class="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-base font-bold text-white">
       B
     </div>
@@ -39,10 +39,11 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'auth' })
+definePageMeta({ layout: 'auth', public: true })
 
 const { login, role } = useAuth()
 const router = useRouter()
+const route = useRoute()
 
 const username = ref('')
 const password = ref('')
@@ -60,7 +61,8 @@ async function handleSubmit() {
   isSubmitting.value = true
   try {
     await login(username.value.trim(), password.value)
-    await router.push(destinationForRole())
+    const redirect = route.query.redirect
+    await router.push(typeof redirect === 'string' && redirect.startsWith('/') ? redirect : destinationForRole())
   } catch (error) {
     errorMessage.value = error instanceof Error ? error.message : 'No se pudo iniciar sesión'
   } finally {

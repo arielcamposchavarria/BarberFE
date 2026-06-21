@@ -1,5 +1,5 @@
 <template>
-  <div ref="mapContainer" class="h-96 w-full overflow-hidden rounded-2xl border border-slate-100 shadow-sm" />
+  <div ref="mapContainer" class="h-60 w-full overflow-hidden rounded-2xl border border-slate-100 shadow-sm sm:h-96" />
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full max-w-sm rounded-3xl bg-white p-9 shadow-xl shadow-slate-900/5">
+  <div class="w-full max-w-sm rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/5 sm:p-9">
     <div class="mb-6 flex h-11 w-11 items-center justify-center rounded-2xl bg-indigo-600 text-base font-bold text-white">
       B
     </div>
@@ -44,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'auth' })
+definePageMeta({ layout: 'auth', public: true })
 
 const clientsStore = useClientsStore()
 const { login } = useAuth()

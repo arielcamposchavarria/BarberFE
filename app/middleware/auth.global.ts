@@ -5,7 +5,7 @@
  */
 export default defineNuxtRouteMiddleware((to) => {
   if (!import.meta.client) return
-  if (to.path === '/login' || to.path === '/register') return
+  if (to.meta.public) return
 
   const { isAuthenticated } = useAuth()
   if (!isAuthenticated.value) {

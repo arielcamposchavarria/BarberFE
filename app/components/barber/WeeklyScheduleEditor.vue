@@ -1,23 +1,23 @@
 <template>
   <div class="space-y-4">
-    <div v-for="(row, index) in rows" :key="row.key" class="flex flex-wrap items-end gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-4">
-      <div>
+    <div v-for="(row, index) in rows" :key="row.key" class="flex flex-col gap-3 rounded-2xl border border-slate-100 bg-slate-50/60 p-4 sm:flex-row sm:flex-wrap sm:items-end">
+      <div class="w-full sm:w-auto">
         <label class="mb-1 block text-xs font-medium text-slate-600">Día</label>
-        <select v-model.number="row.dayOfWeek" class="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100">
+        <select v-model.number="row.dayOfWeek" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 sm:w-auto">
           <option v-for="day in days" :key="day.value" :value="day.value">
             {{ day.label }}
           </option>
         </select>
       </div>
-      <div>
+      <div class="w-full sm:w-auto">
         <label class="mb-1 block text-xs font-medium text-slate-600">Inicio</label>
-        <input v-model="row.startTime" type="time" class="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100">
+        <input v-model="row.startTime" type="time" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 sm:w-auto">
       </div>
-      <div>
+      <div class="w-full sm:w-auto">
         <label class="mb-1 block text-xs font-medium text-slate-600">Fin</label>
-        <input v-model="row.endTime" type="time" class="rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100">
+        <input v-model="row.endTime" type="time" class="w-full rounded-xl border border-slate-200 px-3 py-2 text-sm outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 sm:w-auto">
       </div>
-      <AppButton variant="danger" @click="removeRow(index)">
+      <AppButton variant="danger" class="w-full sm:w-auto" @click="removeRow(index)">
         Quitar
       </AppButton>
     </div>
